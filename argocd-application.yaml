@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Applicayion
+metadata:
+  name: nen-application
+  namespace: demo-cm
+  finalisers:
+  - resources-finaliser.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Oleg-olegatr/nen.git
+    targetRevision: HEAD
+    path: .
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    
